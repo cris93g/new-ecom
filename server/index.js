@@ -6,7 +6,7 @@ const session = require("express-session");
 const app = express();
 const port = process.env.port || 3001;
 const cors = require("cors");
-const control = require("./ProductsController");
+const control = require("./controller/ProductsController");
 
 app.use(cors());
 app.use(json());
@@ -28,7 +28,8 @@ massive(process.env.CONNECTION_STRING).then(dbinstance => {
 app.get("/api/test", (req, res, next) => {
 	res.sendStatus(200);
 });
-app.post("/api/products", control.addToProducts);
+app.post("/api/addproducts", control.addToProducts);
+app.get("/api/products", control.getProducts);
 app.listen(port, () => {
 	console.log(`app is listening in port ${port}`);
 });
