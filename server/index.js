@@ -8,10 +8,10 @@ const port = process.env.port || 3001;
 const cors = require("cors");
 const control = require("./controller/ProductsController");
 const passport = require("passport");
-const { getUser, strat, logout } = require(`${__dirname}/controller/authCtrl`);
+
 app.use(cors());
 app.use(json());
-
+const { getUser, strat, logout } = require(`${__dirname}/controller/authCtrl`);
 app.use(
 	session({
 		secret: process.env.SESSION_SECRET,
